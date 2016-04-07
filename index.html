@@ -62,43 +62,36 @@
         } else {
           var placeList = JSON.parse(data);
           var HTMLplaceList = placeList.map(function(place) {
-            var HTMLString = "<div class='col-md-4 drop-"+(Math.round(Math.random()*10000%3)+1)+"'><h2>"+place.BUSSCENE_PLACE+"</h2><img class='img-thumbnail' src='"+place.BUSSCENE_IMAGE+"'><p><ul class='list-group'>";
+            var HTMLString = "<div class='col-md-4 drop-"+(Math.round(Math.random()*10000%3)+1)+"'><h2></b>"+place.BUSSCENE_PLACE+"</h2><img class='img-thumbnail' src='"+place.BUSSCENE_IMAGE+"'><p><ul class='list-group'>";
             var items = "";
             for (var key in place) {
               switch(key){
-                case "BUSSCENE_PLACE":
-                  if(place[key])
-                  items=items+"<li class='list-group-item'>景點；"+place[key]+"</li>";
-                  break;
                 case "BUSSCENE_ROUTE":
                   if(place[key])
-                  items=items+"<li class='list-group-item'>路線："+place[key]+"</li>";
+                  items=items+"<li class='list-group-item'><b>路線：</b>"+place[key]+"</li>";
                   break;
                 case "BUSSCENE_DESC":
                   if(place[key])
-                  items=items+"<li class='list-group-item'>介紹："+place[key]+"</li>";
+                  items=items+"<li class='list-group-item'><b>簡介：</b>"+place[key]+"</li>";
                   break;
                 case "BUSSCENE_OPENTIME":
                   if(place[key])
-                  items=items+"<li class='list-group-item'>開放時間："+place[key]+"</li>";
+                  items=items+"<li class='list-group-item'><b>開放時間：</b>"+place[key]+"</li>";
                   break;
                 case "BUSSCENE_PRICE":
                   if(place[key])
-                  items=items+"<li class='list-group-item'>票價："+place[key]+"</li>";
+                  items=items+"<li class='list-group-item'><b>票價：</b>"+place[key]+"</li>";
                   break;
                 case "BUSSCENE_ADDRESS":
                   if(place[key])
-                  items=items+"<li class='list-group-item'>地址："+place[key]+"</li>";
+                  items=items+"<li class='list-group-item'><b>地址：</b>"+place[key]+"</li>";
                   break;
                 case "BUSSCENE_URL":
                   if(place[key])
-                  items=items+"<li class='list-group-item'>網站："+place[key]+"</li>";
+                  items=items+"<li class='list-group-item'><b>網站：</b>"+place[key]+"</li>";
                   break;
                 default:
                   break;
-              // if(key!="BUSSCENE_INDEX") {
-              //   items=items+"<li class='list-group-item'>"+key+":"+place[key]+"</li>";
-              // }
               }
             }
             var HTMLString = HTMLString+items+"</ul></p><div>";
