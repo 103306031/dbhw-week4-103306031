@@ -5,12 +5,14 @@
 .jumbotron {
 	background-image: url("");
 	height: 700px;
+	opacity: 0.5;
 	transition: 1000ms;
 }
 
 .jumbotron:hover {
 	background-color: #ea9d76;
 	background-image: url("");
+	height: 700px;
 	opacity: 1;
 	transition: 1000ms;
 }
