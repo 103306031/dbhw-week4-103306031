@@ -1,0 +1,29 @@
+.jumbotron h1{
+	text-align: center;
+	margin-top: 120px;
+}
+.jumbotron {
+	background-image: url("");
+	height: 700px;
+	transition: 1000ms;
+}
+
+.jumbotron:hover {
+	background-color: #ea9d76;
+	background-image: url("");
+	opacity: 1;
+	transition: 1000ms;
+}
+/*
+.animated {
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.jumbotron .bg-overlay {
+    background: rgba(0,0,0,0);
+}
+.jumbotron:hover .bg-overlay {
+    background: rgba(0,0,0,0.5);
+}*/
+

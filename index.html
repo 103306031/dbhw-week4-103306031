@@ -18,22 +18,34 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">高雄市文化公車站牌</a>
+          <a class="navbar-brand" href="http://culturalbus.khcc.gov.tw/home02.aspx?ID=$1001&IDK=2&EXEC=L">高雄市文化公車</a>
         </div>
       </div>
     </nav>
-
+   
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="bg-overlay animated">
     <div class="jumbotron">
+
+
       <div class="container">
         <br>
         <br>
-        <h1>高雄市文化公車站牌</h1>
+        <h1>高雄市文化公車旅遊景點</h1>
       </div>
+       </div>
     </div>
 
     <div class="container">
+       <div class="demo-3">
+      <ul class="spinner">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
       <!-- Example row of columns -->
       <div id="content" class="row"></div>
       <div class="sk-cube-grid">
@@ -88,7 +100,7 @@
                   break;
                 case "BUSSCENE_URL":
                   if(place[key])
-                  items=items+"<li class='list-group-item'><b>網站：</b>"+place[key]+"</li>";
+                  items=items+"<li class='list-group-item'><b>網站：</b><a>"+place[key]+"</a></li>";
                   break;
                 default:
                   break;
