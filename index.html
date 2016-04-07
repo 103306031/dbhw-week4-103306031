@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/lodash/4.6.1/lodash.min.js"></script>
     <!-- Latest compiled and minified CSS -->
@@ -11,13 +12,13 @@
     <link rel="stylesheet" href="./css/main.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">高雄市家庭寄養服務據點</a>
+          <a class="navbar-brand" href="#">高雄市文化公車站牌</a>
         </div>
       </div>
     </nav>
@@ -28,28 +29,25 @@
       <div class="container">
         <br>
         <br>
-        <h1>高雄市家庭寄養服務據點</h1>
+        <h1>高雄市文化公車站牌</h1>
       </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <img src="http://163.29.39.183/uploads/images/medium/2a2785be-2cce-4e37-86d0-742e75f9ace3.jpg"class="img-thumbnail">
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
+      <div id="content" class="row"></div>
+      <div class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
       </div>
-
       <hr>
-
       <footer>
         <p>&copy; 2016 NCCU MIS</p>
       </footer>
@@ -58,11 +56,58 @@
   </body>
   <script type="text/javascript">
     $(document).ready(function() {
-      getData(function(err, result) {
+      getData(function(err, data) {
         if(err) {
           console.log(err);
         } else {
-          console.log(result);
+          var placeList = JSON.parse(data);
+          var HTMLplaceList = placeList.map(function(place) {
+            var HTMLString = "<div class='col-md-4 drop-"+(Math.round(Math.random()*10000%3)+1)+"'><h2>"+place.BUSSCENE_PLACE+"</h2><img class='img-thumbnail' src='"+place.BUSSCENE_IMAGE+"'><p><ul class='list-group'>";
+            var items = "";
+            for (var key in place) {
+              switch(key){
+                case "BUSSCENE_PLACE":
+                  if(place[key])
+                  items=items+"<li class='list-group-item'>景點；"+place[key]+"</li>";
+                  break;
+                case "BUSSCENE_ROUTE":
+                  if(place[key])
+                  items=items+"<li class='list-group-item'>路線："+place[key]+"</li>";
+                  break;
+                case "BUSSCENE_DESC":
+                  if(place[key])
+                  items=items+"<li class='list-group-item'>介紹："+place[key]+"</li>";
+                  break;
+                case "BUSSCENE_OPENTIME":
+                  if(place[key])
+                  items=items+"<li class='list-group-item'>開放時間："+place[key]+"</li>";
+                  break;
+                case "BUSSCENE_PRICE":
+                  if(place[key])
+                  items=items+"<li class='list-group-item'>票價："+place[key]+"</li>";
+                  break;
+                case "BUSSCENE_ADDRESS":
+                  if(place[key])
+                  items=items+"<li class='list-group-item'>地址："+place[key]+"</li>";
+                  break;
+                case "BUSSCENE_URL":
+                  if(place[key])
+                  items=items+"<li class='list-group-item'>網站："+place[key]+"</li>";
+                  break;
+                default:
+                  break;
+              // if(key!="BUSSCENE_INDEX") {
+              //   items=items+"<li class='list-group-item'>"+key+":"+place[key]+"</li>";
+              // }
+              }
+            }
+            var HTMLString = HTMLString+items+"</ul></p><div>";
+            return HTMLString;
+          });
+          HTMLplaceList.forEach(function(html) {
+            $(html).appendTo("#content");
+          });
+          $('.sk-cube-grid').css('display', 'none');
         }
       });
     });

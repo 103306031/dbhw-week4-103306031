@@ -1,4 +1,4 @@
-var API_PATH = "http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AE&CaseNo2=16&FileType=1&Lang=C&FolderType=";
+var API_PATH = "http://opendata.khcc.gov.tw/public/OD_culturalbus_busscene.ashx";
 
 function getData(cb) {
   $.ajax({
@@ -12,3 +12,4 @@ function getData(cb) {
     }
   });
 }
+
